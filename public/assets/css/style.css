@@ -3,3 +3,6 @@
     color: red;
     font-weight: bold;
 }
+.form-control, .btn{
+    border-radius: 0 !important;
+}

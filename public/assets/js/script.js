@@ -10,6 +10,8 @@ $(function(){
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+
+    $(".datatables-basic").dataTable();
 });
 
 setTimeout(function () {
