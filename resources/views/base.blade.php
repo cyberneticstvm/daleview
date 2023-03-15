@@ -642,7 +642,7 @@
                           <div data-i18n="New Patient">New Patient</div>
                         </a>
                       </li>
-                      <li class="menu-item">
+                      <!--<li class="menu-item">
                         <a
                           href="/dash"
                           class="menu-link"
@@ -650,7 +650,7 @@
                           <i class="menu-icon tf-icons bx bx-file"></i>
                           <div data-i18n="Documentation">Documentation</div>
                         </a>
-                      </li>
+                      </li>-->
                     </ul>
                   </li>
                   <li class="menu-item">
@@ -665,7 +665,7 @@
                           <div data-i18n="New Patient">New Patient</div>
                         </a>
                       </li>
-                      <li class="menu-item">
+                      <!--<li class="menu-item">
                         <a
                           href="/dash"
                           class="menu-link"
@@ -673,7 +673,7 @@
                           <i class="menu-icon tf-icons bx bx-file"></i>
                           <div data-i18n="Documentation">Documentation</div>
                         </a>
-                      </li>
+                      </li>-->
                     </ul>
                   </li>
                   <li class="menu-item">
@@ -688,7 +688,7 @@
                           <div data-i18n="New Patient">New Patient</div>
                         </a>
                       </li>
-                      <li class="menu-item">
+                      <!--<li class="menu-item">
                         <a
                           href="/dash"
                           class="menu-link"
@@ -696,7 +696,7 @@
                           <i class="menu-icon tf-icons bx bx-file"></i>
                           <div data-i18n="Documentation">Documentation</div>
                         </a>
-                      </li>
+                      </li>-->
                     </ul>
                   </li>
                   <li class="menu-item">
@@ -711,7 +711,7 @@
                           <div data-i18n="Manage User">Manage User</div>
                         </a>
                       </li>
-                      <li class="menu-item">
+                      <!--<li class="menu-item">
                         <a
                           href="/dash"
                           class="menu-link"
@@ -719,7 +719,7 @@
                           <i class="menu-icon tf-icons bx bx-file"></i>
                           <div data-i18n="Documentation">Documentation</div>
                         </a>
-                      </li>
+                      </li>-->
                     </ul>
                   </li>
                   <li class="menu-item">
@@ -734,7 +734,7 @@
                           <div data-i18n="New Patient">New Patient</div>
                         </a>
                       </li>
-                      <li class="menu-item">
+                      <!--<li class="menu-item">
                         <a
                           href="/dash"
                           class="menu-link"
@@ -742,7 +742,7 @@
                           <i class="menu-icon tf-icons bx bx-file"></i>
                           <div data-i18n="Documentation">Documentation</div>
                         </a>
-                      </li>
+                      </li>-->
                     </ul>
                   </li>
                 </ul>
@@ -778,7 +778,7 @@
                 </div>
                 <div>
                     made with ❤️ by
-                  <a href="https://cybernetics.me" target="_blank" class="footer-link fw-semibold">CYBERNETICS</a>
+                  <a href="https://liexa.in" target="_blank" class="footer-link fw-semibold">LIEXA</a>
                 </div>
               </div>
             </footer>
