@@ -32,7 +32,7 @@
                                 <small class="text-danger">{{ $errors->first('email') }}</small>
                             @enderror
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <label class="form-label req">Role</label>
                             <select name="role" class="form-control">
                                 <option value="">Select</option>
@@ -50,6 +50,17 @@
                             <input type="password" class="form-control" name="password" placeholder="******">
                             @error('password')
                                 <small class="text-danger">{{ $errors->first('password') }}</small>
+                            @enderror
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label req">Status</label>
+                            <select name="status" class="form-control">
+                                <option value="">Select</option>
+                                <option value="1" {{ ($user->status == 1) ? 'selected' : '' }}>Active</option>
+                                <option value="0" {{ ($user->status == 0) ? 'selected' : '' }}>Inactive</option>
+                            </select>
+                            @error('status')
+                                <small class="text-danger">{{ $errors->first('status') }}</small>
                             @enderror
                         </div>
                     </div>

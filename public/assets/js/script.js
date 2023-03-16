@@ -12,6 +12,10 @@ $(function(){
     });
 
     $(".datatables-basic").dataTable();
+
+    $('.select2').select2({
+        placeholder: 'Select'
+    });
 });
 
 setTimeout(function () {

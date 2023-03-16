@@ -53,7 +53,7 @@
                         </div>
                     </div>
                     <div class="pt-4 float-end">
-                        <button type="submit" class="btn btn-submit btn-primary me-sm-3 me-1">Submit</button>
+                        <button type="submit" class="btn btn-submit btn-primary me-sm-3 me-1">Save</button>
                         <button type="button" onclick="history.back()" class="btn btn-label-secondary">Cancel</button>
                     </div>
                 </form>

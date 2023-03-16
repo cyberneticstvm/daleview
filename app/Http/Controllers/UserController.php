@@ -18,7 +18,7 @@ class UserController extends Controller
             'password' => 'required',
         ]);
         $credentials = $request->only('email', 'password');
-        if(Auth::attempt($credentials)):
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password, 'status' => 1])):
             $user = Auth::getProvider()->retrieveByCredentials($credentials);
             Auth::login($user, $request->get('remember'));
             return redirect()->route('dash')->with("success", "Logged in successfully!");
@@ -70,6 +70,7 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email:filter|unique:users,email,'.$id,
             'role' => 'required',
+            'status' => 'required',
         ]);
         $input = $request->all();
         $user = User::find($id);
