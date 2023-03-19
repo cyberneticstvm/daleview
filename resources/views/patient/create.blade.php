@@ -3,7 +3,7 @@
 <!-- Content -->
 <div class="row">
     <h4 class="py-3 breadcrumb-wrapper mb-4">
-        <span class="text-muted fw-light">Operations/</span>Manage Patient
+        <span class="text-muted fw-light">Patient/</span>Manage Patient
     </h4>
     <!-- Website Analytics-->
     <div class="col-lg-12 col-md-12 mb-4">

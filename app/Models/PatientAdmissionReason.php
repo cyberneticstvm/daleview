@@ -10,7 +10,7 @@ class PatientAdmissionReason extends Model
     use HasFactory;
 
     protected $fillable = [
-        'patient_id',
+        'file_id',
         'reason',
     ];
 }

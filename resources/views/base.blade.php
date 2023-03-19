@@ -640,18 +640,18 @@
                       <li class="menu-item">
                         <a href="/patient" class="menu-link">
                           <i class="menu-icon tf-icons bx bx-user"></i>
-                          <div data-i18n="New Patient">New Patient</div>
+                          <div data-i18n="Patient Register">Patient Register</div>
                         </a>
                       </li>
-                      <!--<li class="menu-item">
+                      <li class="menu-item">
                         <a
-                          href="/dash"
+                          href="/patient/file"
                           class="menu-link"
                         >
                           <i class="menu-icon tf-icons bx bx-file"></i>
-                          <div data-i18n="Documentation">Documentation</div>
+                          <div data-i18n="Patient File Register">Patient File Register</div>
                         </a>
-                      </li>-->
+                      </li>
                     </ul>
                   </li>
                   <li class="menu-item">

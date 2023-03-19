@@ -3,20 +3,20 @@
 <!-- Content -->
 <div class="row">
     <h4 class="py-3 breadcrumb-wrapper mb-4">
-        <span class="text-muted fw-light">Operations/</span>Manage Patient
+        <span class="text-muted fw-light">Patient/</span>Manage Patient
     </h4>
     <!-- Website Analytics-->
     <div class="col-lg-12 col-md-12 mb-4">
         <div class="card">
             <div class="card-header">
                 <div class="row">
-                    <div class="col-6"><h5 class="card-title mb-0">Patient List</h5></div>
+                    <div class="col-6"><h5 class="card-title mb-0">Patient Register</h5></div>
                     <div class="col text-end"><a href="/patient/create"><i class='bx bx-plus-medical text-primary'></i></a></div>
                 </div>                
             </div>
             <div class="card-body table-responsive">
                 <table class="datatables-basic table table-sm table-bordered">
-                    <thead><tr><th>SL No</th><th>Patient ID</th><th>Patient Name</th><th>Age</th><th>Gender</th><th>Contact Number</th><th>Re-Open</th><th>Receipt</th><th>Edit</th><th>Delete</th></tr></thead>
+                    <thead><tr><th>SL No</th><th>Patient ID</th><th>Patient Name</th><th>Age</th><th>Gender</th><th>Contact Number</th><th>File No</th><th>Receipt</th><th>Edit</th><th>Delete</th></tr></thead>
                     <tbody>
                         @php $c = 1; @endphp
                         @forelse($patients as $key => $patient)
@@ -26,10 +26,10 @@
                             <td>{{ $patient->first_name }}</td>                            
                             <td>{{ $patient->age }}</td>
                             <td>{{ $patient->gendername->name }}</td>
-                            <td>{{ $patient->mobile }}</td>
-                            <td></td>
-                            <td></td>
-                            <td class="text-center"><a href="patient/edit/{{$patient->id}}"><i class="fa fa-pencil text-warning"></i></a></td>
+                            <td>{{ $patient->mobile }}</td>                            
+                            <td class="text-center"><a href="patient/file/create/{{$patient->id}}"><i class="fa fa-plus text-success fw-bold"></i></a></td>
+                            <td class="text-center">{!! ($patient->registration_fee > 0) ? "<a href='#' target='_blank'><i class='fa fa-file-pdf text-danger'></i></a>" : '' !!}</td>
+                            <td class="text-center"><a href="/patient/edit/{{$patient->id}}"><i class="fa fa-pencil text-warning"></i></a></td>
                             <td class="text-center">
                                 <form method="post" action="{{ route('patient.delete', $patient->id) }}">
                                     @csrf 

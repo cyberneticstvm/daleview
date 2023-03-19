@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('patient_admission_reasons', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('patient_id');
+            $table->unsignedBigInteger('file_id');
             $table->unsignedBigInteger('reason')->references('id')->on('extras');
-            $table->foreign('patient_id')->references('id')->on('patients')->onDelete('cascade');
+            $table->foreign('file_id')->references('id')->on('patient_files')->onDelete('cascade');
             $table->timestamps();
         });
     }

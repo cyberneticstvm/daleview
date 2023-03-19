@@ -28,15 +28,8 @@ return new class extends Migration
             $table->text('employment_details')->nullable();
             $table->unsignedBigInteger('language')->references('id')->on('extras');
             $table->unsignedBigInteger('id_proof')->references('id')->on('extras');
-            $table->string('id_proof_number', 25)->nullable();
-            $table->unsignedBigInteger('referred_by')->references('id')->on('extras');
-            $table->text('referral_person_details')->nullable();
-            $table->string('referral_person_mobile', 10)->nullable();
-            $table->string('referral_person_email', 50)->nullable();
-            $table->string('patient_photo', 50)->nullable();
-            $table->string('accompanying_person', 50)->nullable();
-            $table->string('relation_to_patient', 50)->nullable();
-            $table->string('accompanying_person_mobile', 10)->nullable();
+            $table->string('id_proof_number', 25)->nullable();            
+            $table->string('patient_photo', 50)->nullable();            
             $table->date('registration_date')->nullable();
             $table->unsignedBigInteger('created_by')->references('id')->on('users');
             $table->unsignedBigInteger('updated_by')->references('id')->on('users');

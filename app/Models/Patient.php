@@ -25,24 +25,13 @@ class Patient extends Model
         'employment_details',
         'language',
         'id_proof',
-        'id_proof_number',
-        'referred_by',
-        'referral_person_details',
-        'referral_person_mobile',
-        'referral_person_email',
-        'patient_photo',
-        'accompanying_person',
-        'relation_to_patient',
-        'accompanying_person_mobile',
+        'id_proof_number',        
+        'patient_photo',        
         'registration_fee',
         'registration_date',
         'created_by',
         'updated_by',
     ];
-
-    public function reasons(){
-        return $this->hasMany(PatientAdmissionReason::class, 'patient_id');
-    }
 
     public function gendername(){
         return $this->hasOne(Extra::class, 'id', 'gender');
