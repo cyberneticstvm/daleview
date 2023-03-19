@@ -53,10 +53,7 @@ class PatientController extends Controller
             'employment' => 'required',
             'language' => 'required',
             'id_proof' => 'required',
-            'id_proof_number' => 'required',
-            'reasons' => 'present|array',
-            'referred_by' => 'required',
-            'referral_person_mobile' => 'required',
+            'id_proof_number' => 'required',            
             'registration_date' => 'required',
         ]);
         $input = $request->all();
@@ -70,20 +67,7 @@ class PatientController extends Controller
             Storage::disk('public')->putFileAs($fname, $doc, '');
             $input['patient_photo'] = $newname;
         endif;
-        try{
-            DB::transaction(function() use ($input, $request) {
-                $patient = Patient::create($input);
-                foreach($request->reasons as $key => $reason):
-                    $data [] = [
-                        'patient_id' => $patient->id,
-                        'reason' => $reason,
-                    ];
-                endforeach;
-                $patient = PatientAdmissionReason::insert($data);
-            });
-        }catch(Exception $e){
-            return redirect()->back()->with('error', 'Failed! '.$e->getMessage())->withInput($request->all());
-        }
+        $patient = Patient::create($input);        
         return redirect()->route('patient')->with('success', 'Patient Created Successfully!');        
     }
 
@@ -122,10 +106,7 @@ class PatientController extends Controller
             'employment' => 'required',
             'language' => 'required',
             'id_proof' => 'required',
-            'id_proof_number' => 'required',
-            'reasons' => 'present|array',
-            'referred_by' => 'required',
-            'referral_person_mobile' => 'required',
+            'id_proof_number' => 'required',         
             'registration_date' => 'required',
         ]);
         $input = $request->all();
@@ -138,22 +119,8 @@ class PatientController extends Controller
             Storage::disk('public')->putFileAs($fname, $doc, '');
             $input['patient_photo'] = $newname;
         endif;
-        try{
-            DB::transaction(function() use ($input, $request, $id) {
-                $patient = Patient::find($id);
-                $patient->update($input);
-                PatientAdmissionReason::where('patient_id', $id)->delete();
-                foreach($request->reasons as $key => $reason):
-                    $data [] = [
-                        'patient_id' => $id,
-                        'reason' => $reason,
-                    ];
-                endforeach;
-                $patient = PatientAdmissionReason::insert($data);
-            });
-        }catch(Exception $e){
-            return redirect()->back()->with('error', 'Failed! '.$e->getMessage())->withInput($request->all());
-        }
+        $patient = Patient::find($id);
+        $patient->update($input);        
         return redirect()->route('patient')->with('success', 'Patient Updated Successfully!'); 
     }
 
