@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PatientFileController;
+use App\Http\Controllers\PatientCounsellingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,10 +52,10 @@ Route::group(['middleware' => ['web', 'auth']], function(){
     Route::put('/patient/file/edit/{id}', [PatientFileController::class, 'update'])->name('patient.file.update');
     Route::delete('/patient/file/delete/{id}', [PatientFileController::class, 'destroy'])->name('patient.file.delete');
 
-    Route::get('/patient/counselling', [PatientFileController::class, 'index'])->name('patient.counselling');
-    Route::get('/patient/counselling/create/{id}', [PatientFileController::class, 'create'])->name('patient.counselling.create');
-    Route::post('/patient/counselling/create/{id}', [PatientFileController::class, 'store'])->name('patient.counselling.save');
-    Route::get('/patient/counselling/edit/{id}', [PatientFileController::class, 'edit'])->name('patient.counselling.edit');
-    Route::put('/patient/counselling/edit/{id}', [PatientFileController::class, 'update'])->name('patient.counselling.update');
-    Route::delete('/patient/counselling/delete/{id}', [PatientFileController::class, 'destroy'])->name('patient.counselling.delete');
+    Route::get('/patient/counselling/{id}', [PatientCounsellingController::class, 'index'])->name('patient.counselling');
+    Route::get('/patient/counselling/create/{id}', [PatientCounsellingController::class, 'create'])->name('patient.counselling.create');
+    Route::post('/patient/counselling/create/{id}', [PatientCounsellingController::class, 'store'])->name('patient.counselling.save');
+    Route::get('/patient/counselling/edit/{id}', [PatientCounsellingController::class, 'edit'])->name('patient.counselling.edit');
+    Route::put('/patient/counselling/edit/{id}', [PatientCounsellingController::class, 'update'])->name('patient.counselling.update');
+    Route::delete('/patient/counselling/delete/{id}', [PatientCounsellingController::class, 'destroy'])->name('patient.counselling.delete');
 });

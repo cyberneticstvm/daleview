@@ -21,7 +21,7 @@
                         @forelse($records as $key => $file)
                         <tr>
                             <td>{{ $c++ }}</td>
-                            <td><a href="/patient/counselling">{{ $file->id }}</a></td>
+                            <td><a href="/patient/counselling/{{ $file->id }}">{{ $file->id }}</a></td>
                             <td>{{ $file->patient->id }}</td>                            
                             <td>{{ $file->patient->first_name.' '.$file->patient->last_name }}</td>
                             <td>{{ $file->counsellor->name }}</td>

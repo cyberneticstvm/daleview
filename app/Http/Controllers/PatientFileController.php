@@ -25,7 +25,7 @@ class PatientFileController extends Controller
 
     public function index()
     {
-        $records = PatientFile::whereDate('created_at', Carbon::today())->get();
+        $records = PatientFile::whereDate('created_at', Carbon::today())->orderByDesc('id')->get();
         return view('patient-files.index', compact('records'));
     }
 
@@ -60,7 +60,7 @@ class PatientFileController extends Controller
                 $file = PatientFile::create($input);             
                 foreach($request->reasons as $key => $reason):
                     $data [] = [
-                        'patient_id' => $file->id,
+                        'file_id' => $file->id,
                         'reason' => $reason,
                     ];
                 endforeach;
@@ -111,7 +111,7 @@ class PatientFileController extends Controller
                 PatientAdmissionReason::where('file_id', $id)->delete();
                 foreach($request->reasons as $key => $reason):
                     $data [] = [
-                        'patient_id' => $id,
+                        'file_id' => $id,
                         'reason' => $reason,
                     ];
                 endforeach;
