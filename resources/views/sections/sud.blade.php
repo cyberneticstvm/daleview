@@ -128,86 +128,119 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 table-responsive">
-            <p class="fw-bold">Other Details</p>
-            <table class="table table-bordered table-sm">
-                <thead><tr><th>Description</th><th>Check</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <td>Has the client received treatment for physical health problems in the past five years?</td><td class="text-center"><input class="form-check-input" type="checkbox" name="suicidal_thought" value="1"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><input type="text" class="form-control form-control-sm" placeholder="If yes, details"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><input type="text" class="form-control form-control-sm" placeholder="Details of head injury and treatment provided if any"></td>
-                    </tr>
-                    <tr>
-                        <td>Has the client ever been treated for mental health problems or met a psychiatrist in the past?</td><td class="text-center"><input class="form-check-input" type="checkbox" name="suicidal_thought" value="1"></td>
-                    </tr>
-                    <tr>
-                        <td>Prior treatment for addiction?</td><td class="text-center"><input class="form-check-input" type="checkbox" name="suicidal_thought" value="1"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><input type="text" class="form-control form-control-sm" placeholder="If yes, details"></td>
-                    </tr>
-                    <tr>
-                        <td>Reason given by client for accessing help now?</td><td class="text-center">
-                            <select class="form-control form-control-sm" name="reason_given_by_client">
-                                <option value="0">Select</option>
-                                @forelse($extras->where('category', 'help') as $key => $reason)
-                                    <option value="{{ $reason->id }}" {{ (old('reason_given_by_client') == $reason->id) ? 'selected' : '' }}>{{ $reason->name }}</option>
-                                @empty
-                                @endforelse
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Recognizes problems related to drinking</td><td class="text-center">
-                            <select class="form-control form-control-sm" name="">
-                                <option value="0">Select</option>
-                                @forelse($extras->where('category', 'drink') as $key => $reason)
-                                    <option value="{{ $reason->id }}" {{ (old('') == $reason->id) ? 'selected' : '' }}>{{ $reason->name }}</option>
-                                @empty
-                                @endforelse
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Patients willingness to alter drinking pattern</td><td class="text-center">
-                            <select class="form-control form-control-sm" name="">
-                                <option value="0">Select</option>
-                                @forelse($extras->where('category', 'pattern') as $key => $reason)
-                                    <option value="{{ $reason->id }}" {{ (old('') == $reason->id) ? 'selected' : '' }}>{{ $reason->name }}</option>
-                                @empty
-                                @endforelse
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Willingness for admission</td><td class="text-center">
-                            <select class="form-control form-control-sm" name="">
-                                <option value="0">Select</option>
-                                @forelse($extras->where('category', 'admission') as $key => $reason)
-                                    <option value="{{ $reason->id }}" {{ (old('') == $reason->id) ? 'selected' : '' }}>{{ $reason->name }}</option>
-                                @empty
-                                @endforelse
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Room Allotted</td><td class="text-center">
-                            <select class="form-control form-control-sm" name="">
-                                <option value="0">Select</option>
-                                @forelse($extras->where('category', 'room') as $key => $reason)
-                                    <option value="{{ $reason->id }}" {{ (old('') == $reason->id) ? 'selected' : '' }}>{{ $reason->name }}</option>
-                                @empty
-                                @endforelse
-                            </select>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12 table-responsive">
+                    <p class="fw-bold">Other Details</p>
+                    <table class="table table-bordered table-sm">
+                        <thead><tr><th>Description</th><th>Check</th></tr></thead>
+                        <tbody>
+                            <tr>
+                                <td>Has the client received treatment for physical health problems in the past five years?</td><td class="text-center"><input class="form-check-input" type="checkbox" name="suicidal_thought" value="1"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><input type="text" class="form-control form-control-sm" placeholder="If yes, details"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><input type="text" class="form-control form-control-sm" placeholder="Details of head injury and treatment provided if any"></td>
+                            </tr>
+                            <tr>
+                                <td>Has the client ever been treated for mental health problems or met a psychiatrist in the past?</td><td class="text-center"><input class="form-check-input" type="checkbox" name="suicidal_thought" value="1"></td>
+                            </tr>
+                            <tr>
+                                <td>Prior treatment for addiction?</td><td class="text-center"><input class="form-check-input" type="checkbox" name="suicidal_thought" value="1"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><input type="text" class="form-control form-control-sm" placeholder="If yes, details"></td>
+                            </tr>
+                            <tr>
+                                <td>Reason given by client for accessing help now?</td><td class="text-center">
+                                    <select class="form-control form-control-sm" name="reason_given_by_client">
+                                        <option value="0">Select</option>
+                                        @forelse($extras->where('category', 'help') as $key => $reason)
+                                            <option value="{{ $reason->id }}" {{ (old('reason_given_by_client') == $reason->id) ? 'selected' : '' }}>{{ $reason->name }}</option>
+                                        @empty
+                                        @endforelse
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Recognizes problems related to drinking</td><td class="text-center">
+                                    <select class="form-control form-control-sm" name="">
+                                        <option value="0">Select</option>
+                                        @forelse($extras->where('category', 'drink') as $key => $reason)
+                                            <option value="{{ $reason->id }}" {{ (old('') == $reason->id) ? 'selected' : '' }}>{{ $reason->name }}</option>
+                                        @empty
+                                        @endforelse
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Patients willingness to alter drinking pattern</td><td class="text-center">
+                                    <select class="form-control form-control-sm" name="">
+                                        <option value="0">Select</option>
+                                        @forelse($extras->where('category', 'pattern') as $key => $reason)
+                                            <option value="{{ $reason->id }}" {{ (old('') == $reason->id) ? 'selected' : '' }}>{{ $reason->name }}</option>
+                                        @empty
+                                        @endforelse
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Willingness for admission</td><td class="text-center">
+                                    <select class="form-control form-control-sm" name="">
+                                        <option value="0">Select</option>
+                                        @forelse($extras->where('category', 'admission') as $key => $reason)
+                                            <option value="{{ $reason->id }}" {{ (old('') == $reason->id) ? 'selected' : '' }}>{{ $reason->name }}</option>
+                                        @empty
+                                        @endforelse
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Room Allotted</td><td class="text-center">
+                                    <select class="form-control form-control-sm" name="">
+                                        <option value="0">Select</option>
+                                        @forelse($extras->where('category', 'room') as $key => $reason)
+                                            <option value="{{ $reason->id }}" {{ (old('') == $reason->id) ? 'selected' : '' }}>{{ $reason->name }}</option>
+                                        @empty
+                                        @endforelse
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Delirium Tremens</td><td class="text-center"><input class="form-check-input" type="checkbox" name="suicidal_thought" value="1"></td>
+                            </tr>
+                            <tr>
+                                <td>Suicidal Risk</td><td class="text-center"><input class="form-check-input" type="checkbox" name="suicidal_thought" value="1"></td>
+                            </tr>
+                            <tr>
+                                <td>Violence</td><td class="text-center"><input class="form-check-input" type="checkbox" name="suicidal_thought" value="1"></td>
+                            </tr>
+                            <tr>
+                                <td>Cardiac problems</td><td class="text-center"><input class="form-check-input" type="checkbox" name="suicidal_thought" value="1"></td>
+                            </tr>
+                            <tr>
+                                <td>TB</td><td class="text-center"><input class="form-check-input" type="checkbox" name="suicidal_thought" value="1"></td>
+                            </tr>
+                            <tr>
+                                <td>HIV/AIDS/STDs</td><td class="text-center"><input class="form-check-input" type="checkbox" name="suicidal_thought" value="1"></td>
+                            </tr>
+                            <tr>
+                                <td>Hepatitis</td><td class="text-center"><input class="form-check-input" type="checkbox" name="suicidal_thought" value="1"></td>
+                            </tr>
+                            <tr>
+                                <td>Other Co-Morbidities </td><td class="text-center"><input class="form-check-input" type="checkbox" name="suicidal_thought" value="1"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>                
+            </div>
+            <div class="row">
+                <div class="col-md-12 mt-3">
+                    <textarea class="form-control" placeholder="Counselling Notes / Remarks" rows="5"></textarea>
+                </div>
+            </div>                
         </div>
     </div>
     <div class="pt-4 float-end">
