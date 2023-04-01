@@ -34,6 +34,6 @@ function addRow(type){
     }
 }
 
-/*setTimeout(function () {
+setTimeout(function () {
     $(".alert").hide('slow');
-}, 3000);*/
+}, 3000);
