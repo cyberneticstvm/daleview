@@ -1,4 +1,4 @@
-<form method="post" action="" class="frm-tbl">
+<form method="post" action="{{ route('patient.counselling.sud.update', $file->id) }}" class="frm-tbl">
     @csrf
     <input type="hidden" name="patient_id" value="{{ $file->patient_id }}" />
     <input type="hidden" name="file_id" value="{{ $file->id }}" />

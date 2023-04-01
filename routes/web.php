@@ -53,10 +53,10 @@ Route::group(['middleware' => ['web', 'auth']], function(){
     Route::delete('/patient/file/delete/{id}', [PatientFileController::class, 'destroy'])->name('patient.file.delete');
 
     Route::get('/patient/counselling/{id}', [PatientCounsellingController::class, 'index'])->name('patient.counselling');
-    Route::post('/patient/counselling/{id}', [PatientCounsellingController::class, 'updatesud'])->name('patient.counselling.sud.update');
-    /*Route::get('/patient/counselling/create/{id}', [PatientCounsellingController::class, 'create'])->name('patient.counselling.create');
-    Route::post('/patient/counselling/create/{id}', [PatientCounsellingController::class, 'store'])->name('patient.counselling.save');
-    Route::get('/patient/counselling/edit/{id}', [PatientCounsellingController::class, 'edit'])->name('patient.counselling.edit');
+    Route::post('/patient/counselling/sud/{id}', [PatientCounsellingController::class, 'updatesud'])->name('patient.counselling.sud.update');
+    Route::post('/patient/counselling/mhp/{id}', [PatientCounsellingController::class, 'updatemhp'])->name('patient.counselling.mhp.update');
+    Route::post('/patient/counselling/couns/{id}', [PatientCounsellingController::class, 'updatecounselling'])->name('patient.counselling.couns.update');
+    /*Route::get('/patient/counselling/edit/{id}', [PatientCounsellingController::class, 'edit'])->name('patient.counselling.edit');
     Route::put('/patient/counselling/edit/{id}', [PatientCounsellingController::class, 'update'])->name('patient.counselling.update');
     Route::delete('/patient/counselling/delete/{id}', [PatientCounsellingController::class, 'destroy'])->name('patient.counselling.delete');*/
 });

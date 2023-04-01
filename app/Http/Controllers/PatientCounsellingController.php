@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Counselling;
 use App\Models\Extra;
+use App\Models\Mhp;
 use App\Models\PatientFile;
 use App\Models\Substance;
 use App\Models\Sud;
@@ -20,13 +22,15 @@ class PatientCounsellingController extends Controller
         $file = PatientFile::find($id);
         $extras = Extra::all();
         $sud = Sud::where('patient_id', $file->patient_id)->first();
-        return view('patient-counselling.create', compact('file', 'extras', 'sud'));
+        $mhp = Mhp::where('patient_id', $file->patient_id)->first();
+        $counselling = Counselling::where('patient_id', $file->patient_id)->first();
+        return view('patient-counselling.create', compact('file', 'extras', 'sud', 'mhp', 'counselling'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function updatesud(Request $request)
+    public function updatesud(Request $request, $id)
     {
         $this->validate($request, [
             'patient_id' => 'required',
@@ -50,6 +54,36 @@ class PatientCounsellingController extends Controller
             endforeach;
             Substance::where('patient_id', $request->patient_id)->delete();
             Substance::insert($data);
+        }catch(Exception $e){
+            return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
+        }
+        return redirect()->route('patient.counselling', $request->file_id)->with('success', 'Record updated successfully');
+    }
+
+    public function updatemhp(Request $request, $id){
+        $this->validate($request, [
+            'patient_id' => 'required',
+        ]);
+        $input = $request->except(array('_token', 'file_id'));
+        $input['created_by'] = $request->user()->id;
+        $input['updated_by'] = $request->user()->id;
+        try{
+            Mhp::upsert($input, 'patient_id');
+        }catch(Exception $e){
+            return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
+        }
+        return redirect()->route('patient.counselling', $request->file_id)->with('success', 'Record updated successfully');
+    }
+
+    public function updatecounselling(Request $request, $id){
+        $this->validate($request, [
+            'patient_id' => 'required',
+        ]);
+        $input = $request->except(array('_token', 'file_id'));
+        $input['created_by'] = $request->user()->id;
+        $input['updated_by'] = $request->user()->id;
+        try{
+            Counselling::upsert($input, 'patient_id');
         }catch(Exception $e){
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
         }
