@@ -163,19 +163,21 @@
                     <table class="table table-bordered table-sm">
                         <thead><tr><th>Type</th><th>Qty</th><th>Frequency</th><th>Duration</th><th></th></tr></thead>
                         <tbody class="tblSubstance">
-                            @forelse($sud->substances as $key => $val)
-                            <tr>
-                                <td><input class="form-control form-control-sm" type="text" name="type[]" placeholder="Type" value="{{ $val->type }}"></td>
-                                <td><input class="form-control form-control-sm" type="number" name="qty[]" placeholder="Qty" value="{{ $val->qty }}"></td>
-                                <td><input class="form-control form-control-sm" type="text" name="frequency[]" placeholder="Frequency" value="{{ $val->frequency }}"></td>
-                                <td><input class="form-control form-control-sm" type="text" name="duration[]" placeholder="Duration" value="{{ $val->duration }}"></td>
-                                @if($key == 0)
-                                <td></td>
-                                @else
-                                <td class="text-center"><a href='javascript:void(0)' onclick="$(this).parent().parent().remove();"><i class="fa fa-times text-danger"></i></a></td>
-                                @endif
-                            </tr>
-                            @empty
+                            @if(!$sud->substances->isEmpty())
+                                @foreach($sud->substances as $key => $val)
+                                <tr>
+                                    <td><input class="form-control form-control-sm" type="text" name="type[]" placeholder="Type" value="{{ $val->type }}"></td>
+                                    <td><input class="form-control form-control-sm" type="number" name="qty[]" placeholder="Qty" value="{{ $val->qty }}"></td>
+                                    <td><input class="form-control form-control-sm" type="text" name="frequency[]" placeholder="Frequency" value="{{ $val->frequency }}"></td>
+                                    <td><input class="form-control form-control-sm" type="text" name="duration[]" placeholder="Duration" value="{{ $val->duration }}"></td>
+                                    @if($key == 0)
+                                    <td></td>
+                                    @else
+                                    <td class="text-center"><a href='javascript:void(0)' onclick="$(this).parent().parent().remove();"><i class="fa fa-times text-danger"></i></a></td>
+                                    @endif
+                                </tr>
+                                @endforeach
+                            @else
                             <tr>
                                 <td><input class="form-control form-control-sm" type="text" name="type[]" placeholder="Type"></td>
                                 <td><input class="form-control form-control-sm" type="number" name="qty[]" placeholder="Qty"></td>
@@ -183,7 +185,7 @@
                                 <td><input class="form-control form-control-sm" type="text" name="duration[]" placeholder="Duration"></td>
                                 <td></td>
                             </tr>
-                            @endforelse
+                            @endif
                         </tbody>
                     </table>
                 </div>
