@@ -60,7 +60,7 @@ class Sud extends Model
         'updated_by',
     ];
 
-    protected $casts = ['date_of_last_drink' => 'datetime', 'date_of_last_drug_use' => 'datetime'];
+    protected $casts = ['date_of_last_drink' => 'date', 'date_of_last_drug_use' => 'date'];
 
     public function substances(){
         return $this->hasMany(Substance::class, 'patient_id', 'patient_id');

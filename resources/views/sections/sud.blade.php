@@ -21,14 +21,14 @@
                 </div>
                 <div class="col-md-3">
                     <label class="form-label req">Date of last drink</label>
-                    <input type="date" class="form-control" name="date_of_last_drink" placeholder="0 years" value="{{ ($sud) ? $sud->date_of_last_drink->format('Y-m-d') : old('date_of_last_drink') }}">
+                    <input type="date" class="form-control" name="date_of_last_drink" placeholder="0 years" value="{{ ($sud && $sud->date_of_last_drink) ? $sud->date_of_last_drink->format('Y-m-d') : old('date_of_last_drink') }}">
                     @error('date_of_last_drink')
                         <small class="text-danger">{{ $errors->first('date_of_last_drink') }}</small>
                     @enderror
                 </div>
                 <div class="col-md-3">
                     <label class="form-label">Date of last drug use</label>
-                    <input type="date" class="form-control" name="date_of_last_drug_use" placeholder="0 years" value="{{ ($sud) ? $sud->date_of_last_drug_use->format('Y-m-d') : old('date_of_last_drug_use') }}">
+                    <input type="date" class="form-control" name="date_of_last_drug_use" placeholder="0 years" value="{{ ($sud && $sud->date_of_last_drug_use) ? $sud->date_of_last_drug_use->format('Y-m-d') : old('date_of_last_drug_use') }}">
                     @error('date_of_last_drug_use')
                         <small class="text-danger">{{ $errors->first('date_of_last_drug_use') }}</small>
                     @enderror
