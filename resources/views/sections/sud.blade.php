@@ -163,7 +163,7 @@
                     <table class="table table-bordered table-sm">
                         <thead><tr><th>Type</th><th>Qty</th><th>Frequency</th><th>Duration</th><th></th></tr></thead>
                         <tbody class="tblSubstance">
-                            @if($sud->substances)
+                            @if($sud && $sud->substances)
                                 @foreach($sud->substances as $key => $val)
                                 <tr>
                                     <td><input class="form-control form-control-sm" type="text" name="type[]" placeholder="Type" value="{{ $val->type }}"></td>
