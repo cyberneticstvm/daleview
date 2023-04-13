@@ -6,6 +6,7 @@ use App\Models\Counselling;
 use App\Models\Extra;
 use App\Models\Mhp;
 use App\Models\PatientFile;
+use App\Models\SmokingCessation;
 use App\Models\Substance;
 use App\Models\Sud;
 use Carbon\Carbon;
@@ -23,8 +24,9 @@ class PatientCounsellingController extends Controller
         $extras = Extra::all();
         $sud = Sud::where('patient_id', $file->patient_id)->first();
         $mhp = Mhp::where('patient_id', $file->patient_id)->first();
+        $sc = SmokingCessation::where('patient_id', $file->patient_id)->first();
         $counselling = Counselling::where('patient_id', $file->patient_id)->first();
-        return view('patient-counselling.create', compact('file', 'extras', 'sud', 'mhp', 'counselling'));
+        return view('patient-counselling.create', compact('file', 'extras', 'sud', 'mhp', 'counselling', 'sc'));
     }
 
     /**
@@ -84,6 +86,21 @@ class PatientCounsellingController extends Controller
         $input['updated_by'] = $request->user()->id;
         try{
             Counselling::upsert($input, 'patient_id');
+        }catch(Exception $e){
+            return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
+        }
+        return redirect()->route('patient.counselling', $request->file_id)->with('success', 'Record updated successfully');
+    }
+
+    public function updatesmokingcessation(Request $request, $id){
+        $this->validate($request, [
+            'patient_id' => 'required',
+        ]);
+        $input = $request->except(array('_token', 'file_id'));
+        $input['created_by'] = $request->user()->id;
+        $input['updated_by'] = $request->user()->id;
+        try{
+            SmokingCessation::upsert($input, 'patient_id');
         }catch(Exception $e){
             return redirect()->back()->with('error', $e->getMessage())->withInput($request->all());
         }
