@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\HelperController;
+use App\Http\Controllers\LabController;
+use App\Http\Controllers\MedicineController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PatientController;
@@ -35,6 +38,20 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
     Route::put('/user/edit/{id}', [UserController::class, 'update'])->name('user.update');
     Route::delete('/user/delete/{id}', [UserController::class, 'destroy'])->name('user.delete');
+
+    Route::get('/lab', [LabController::class, 'index'])->name('lab');
+    Route::get('/lab/create', [LabController::class, 'create'])->name('lab.create');
+    Route::post('/lab/create', [LabController::class, 'store'])->name('lab.save');
+    Route::get('/lab/edit/{id}', [LabController::class, 'edit'])->name('lab.edit');
+    Route::put('/lab/edit/{id}', [LabController::class, 'update'])->name('lab.update');
+    Route::delete('/lab/delete/{id}', [LabController::class, 'destroy'])->name('lab.delete');
+
+    Route::get('/medicine', [MedicineController::class, 'index'])->name('medicine');
+    Route::get('/medicine/create', [MedicineController::class, 'create'])->name('medicine.create');
+    Route::post('/medicine/create', [MedicineController::class, 'store'])->name('medicine.save');
+    Route::get('/medicine/edit/{id}', [MedicineController::class, 'edit'])->name('medicine.edit');
+    Route::put('/medicine/edit/{id}', [MedicineController::class, 'update'])->name('medicine.update');
+    Route::delete('/medicine/delete/{id}', [MedicineController::class, 'destroy'])->name('medicine.delete');
 });
 
 Route::group(['middleware' => ['web', 'auth']], function(){
@@ -57,7 +74,12 @@ Route::group(['middleware' => ['web', 'auth']], function(){
     Route::post('/patient/counselling/mhp/{id}', [PatientCounsellingController::class, 'updatemhp'])->name('patient.counselling.mhp.update');
     Route::post('/patient/counselling/couns/{id}', [PatientCounsellingController::class, 'updatecounselling'])->name('patient.counselling.couns.update');
     Route::post('/patient/counselling/smoking/{id}', [PatientCounsellingController::class, 'updatesmokingcessation'])->name('patient.counselling.smoking.update');
-    /*Route::get('/patient/counselling/edit/{id}', [PatientCounsellingController::class, 'edit'])->name('patient.counselling.edit');
-    Route::put('/patient/counselling/edit/{id}', [PatientCounsellingController::class, 'update'])->name('patient.counselling.update');
-    Route::delete('/patient/counselling/delete/{id}', [PatientCounsellingController::class, 'destroy'])->name('patient.counselling.delete');*/
+    Route::post('/patient/counselling/doctor/{id}', [PatientCounsellingController::class, 'updatedoctorcomments'])->name('patient.counselling.doctor.update');
+    Route::post('/patient/counselling/lab/{id}', [PatientCounsellingController::class, 'updatelab'])->name('patient.counselling.lab.update');
+    Route::post('/patient/counselling/medicine/{id}', [PatientCounsellingController::class, 'updatemedicine'])->name('patient.counselling.medicine.update');
+
+    Route::get('/pharmacy/register', [HelperController::class, 'getmedicines'])->name('getmedicines');
+    Route::get('/lab/register', [HelperController::class, 'getlabs'])->name('getlabs');
+
+    Route::get('/helper/createddl/{type}', [HelperController::class, 'createddl'])->name('createddl');
 });

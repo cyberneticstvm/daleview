@@ -51,6 +51,45 @@
                         </button>
                       </li>
                       @endforeach
+                      <li class="nav-item">
+                        <button
+                          type="button"
+                          class="nav-link"
+                          role="tab"
+                          data-bs-toggle="tab"
+                          data-bs-target="#navs-justified-doc"
+                          aria-controls="navs-justified-doc"
+                          aria-selected="false"
+                        >
+                          <i class="tf-icons bx bxs-user me-1"></i> Doctor
+                        </button>
+                      </li>
+                      <li class="nav-item">
+                        <button
+                          type="button"
+                          class="nav-link"
+                          role="tab"
+                          data-bs-toggle="tab"
+                          data-bs-target="#navs-justified-lab"
+                          aria-controls="navs-justified-lab"
+                          aria-selected="false"
+                        >
+                          <i class="tf-icons bx bx-plus-medical me-1"></i> Lab
+                        </button>
+                      </li>
+                      <li class="nav-item">
+                        <button
+                          type="button"
+                          class="nav-link"
+                          role="tab"
+                          data-bs-toggle="tab"
+                          data-bs-target="#navs-justified-med"
+                          aria-controls="navs-justified-med"
+                          aria-selected="false"
+                        >
+                          <i class="tf-icons bx bxs-capsule me-1"></i> Medicine
+                        </button>
+                      </li>
                     </ul>
                     <div class="tab-content">
                       <div class="tab-pane fade show active" id="navs-justified-profile" role="tabpanel">                        
@@ -76,6 +115,15 @@
                         @endswitch
                       </div>
                       @endforeach
+                      <div class="tab-pane fade show" id="navs-justified-doc" role="tabpanel">                        
+                        @include("sections.doctor")
+                      </div>
+                      <div class="tab-pane fade show" id="navs-justified-lab" role="tabpanel">                        
+                        @include("sections.lab")
+                      </div>
+                      <div class="tab-pane fade show" id="navs-justified-med" role="tabpanel">                        
+                        @include("sections.medicine")
+                      </div>
                     </div>
                   </div>
                 </div>

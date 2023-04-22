@@ -32,6 +32,29 @@ function addRow(type){
     if(type == 'substance'){
         $(".tblSubstance").append("<tr><td><input class='form-control form-control-sm' type='text' name='type[]' placeholder='Type' required></td><td><input class='form-control form-control-sm' type='number' name='qty[]' placeholder='Qty' required></td><td><input class='form-control form-control-sm' type='text' name='frequency[]' placeholder='Frequency' required></td><td><input class='form-control form-control-sm' type='text' name='duration[]' placeholder='Duration' required></td><td class='text-center'><a href='javascript:void(0)' onclick='$(this).parent().parent().remove();'><i class='fa fa-times text-danger'></i></a></td></tr>");
     }
+    if(type == 'lab'){
+        $(".tblLab").append("<tr><td><select class='form-control form-control-md select2 selLab' data-placeholder='Select' name='labs[]' required='required'><option value=''>Select</option></select></td><td><input type='text' class='form-control' name='notes[]' placeholder='Notes / Remarks' /></td><td class='text-center'><a href='javascript:void(0)' onclick='$(this).parent().parent().remove();'><i class='fa fa-times text-danger'></i></a></td></tr>");
+        $('.selLab').select2();
+        bindDDL('lab', 'selLab');
+    }
+    if(type == 'medicine'){
+        $(".tblMedicine").append("<tr><td><select class='form-control form-control-md select2 selMedicine' data-placeholder='Select' name='medicines[]' required='required'><option value=''>Select</option></select></td><td><input type='number' class='form-control' name='qty[]' placeholder='0' required /></td><td><input type='text' name='batch[]' class='form-control' placeholder='Batch Number' /></td><td><input type='text' class='form-control' name='dosage[]' placeholder='Dosage' required /></td><td><input type='text' class='form-control' name='notes[]' placeholder='Notes / Remarks' /></td><td class='text-center'><a href='javascript:void(0)' onclick='$(this).parent().parent().remove();'><i class='fa fa-times text-danger'></i></a></td></tr>");
+        $('.selMedicine').select2();
+        bindDDL('medicine', 'selMedicine');
+    }
+}
+
+function bindDDL(type, ddl){
+    $.ajax({
+        type: 'GET',
+        url: '/helper/createddl/'+type
+    }).then(function (data){
+        xdata = $.map(data, function(obj){
+            obj.text = obj.name || obj.id;  
+            return obj;
+        });
+        $('.'+ddl).select2({data:xdata});
+    });
 }
 
 setTimeout(function () {

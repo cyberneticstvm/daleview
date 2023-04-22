@@ -661,9 +661,9 @@
                     </a>
                     <ul class="menu-sub">
                       <li class="menu-item">
-                        <a href="/patient" class="menu-link">
-                          <i class="menu-icon tf-icons bx bx-user"></i>
-                          <div data-i18n="New Patient">New Patient</div>
+                        <a href="/lab/register" class="menu-link">
+                          <i class="menu-icon tf-icons bx bx-injection"></i>
+                          <div data-i18n="Lab Register">Lab Register</div>
                         </a>
                       </li>
                       <!--<li class="menu-item">
@@ -684,9 +684,9 @@
                     </a>
                     <ul class="menu-sub">
                       <li class="menu-item">
-                        <a href="/patient" class="menu-link">
-                          <i class="menu-icon tf-icons bx bx-user"></i>
-                          <div data-i18n="New Patient">New Patient</div>
+                        <a href="/pharmacy/register" class="menu-link">
+                          <i class="menu-icon tf-icons bx bx-capsule"></i>
+                          <div data-i18n="Medicine Register">Medicine Register</div>
                         </a>
                       </li>
                       <!--<li class="menu-item">
@@ -712,6 +712,18 @@
                           <div data-i18n="Manage User">Manage User</div>
                         </a>
                       </li>
+                      <li class="menu-item">
+                        <a href="/lab" class="menu-link">
+                          <i class="menu-icon tf-icons bx bx-cylinder"></i>
+                          <div data-i18n="Manage Lab">Manage Lab</div>
+                        </a>
+                      </li>
+                      <li class="menu-item">
+                        <a href="/medicine" class="menu-link">
+                          <i class="menu-icon tf-icons bx bxs-capsule"></i>
+                          <div data-i18n="Manage Medicine">Manage Medicine</div>
+                        </a>
+                      </li>
                       <!--<li class="menu-item">
                         <a
                           href="/dash"
@@ -728,23 +740,6 @@
                       <i class="menu-icon tf-icons bx bx-cog"></i>
                       <div data-i18n="Settings">Settings</div>
                     </a>
-                    <ul class="menu-sub">
-                      <li class="menu-item">
-                        <a href="/patient" class="menu-link">
-                          <i class="menu-icon tf-icons bx bx-user"></i>
-                          <div data-i18n="New Patient">New Patient</div>
-                        </a>
-                      </li>
-                      <!--<li class="menu-item">
-                        <a
-                          href="/dash"
-                          class="menu-link"
-                        >
-                          <i class="menu-icon tf-icons bx bx-file"></i>
-                          <div data-i18n="Documentation">Documentation</div>
-                        </a>
-                      </li>-->
-                    </ul>
                   </li>
                 </ul>
               </div>

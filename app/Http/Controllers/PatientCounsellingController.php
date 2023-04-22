@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Counselling;
+use App\Models\DoctorComment;
 use App\Models\Extra;
 use App\Models\Mhp;
 use App\Models\PatientFile;
+use App\Models\PatientLab;
+use App\Models\PatientMedicine;
 use App\Models\SmokingCessation;
 use App\Models\Substance;
 use App\Models\Sud;
@@ -26,7 +29,8 @@ class PatientCounsellingController extends Controller
         $mhp = Mhp::where('patient_id', $file->patient_id)->first();
         $sc = SmokingCessation::where('patient_id', $file->patient_id)->first();
         $counselling = Counselling::where('patient_id', $file->patient_id)->first();
-        return view('patient-counselling.create', compact('file', 'extras', 'sud', 'mhp', 'counselling', 'sc'));
+        $doc_comments = DoctorComment::where('patient_id', $file->patient_id)->get();
+        return view('patient-counselling.create', compact('file', 'extras', 'sud', 'mhp', 'counselling', 'sc', 'doc_comments'));
     }
 
     /**
@@ -107,6 +111,60 @@ class PatientCounsellingController extends Controller
         return redirect()->route('patient.counselling', $request->file_id)->with('success', 'Record updated successfully');
     }
 
+    public function updatedoctorcomments(Request $request){
+        $this->validate($request, [
+            'comments' => 'required',
+        ]);
+        $input = $request->all();
+        $input['created_by'] = $request->user()->id;
+        DoctorComment::create($input);
+        return redirect()->route('patient.counselling', $request->file_id)->with('success', 'Comments updated successfully');
+    }
+
+    public function updatelab(Request $request){
+        $this->validate($request, [
+            'labs' => 'present|array',
+        ]);
+        $data = [];
+        foreach($request->labs as $key => $lab):
+            $data [] = [
+                'patient_id' => $request->patient_id,
+                'file_id' => $request->patient_id,
+                'lab_id' => $lab,
+                'notes' => $request->notes[$key],
+                'created_by' => $request->user()->id,
+                'updated_by' => $request->user()->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ];
+        endforeach;
+        PatientLab::insert($data);
+        return redirect()->route('patient.counselling', $request->file_id)->with('success', 'Lab updated successfully');
+    }
+
+    public function updatemedicine(Request $request){
+        $this->validate($request, [
+            'medicines' => 'present|array',
+        ]);
+        $data = [];
+        foreach($request->medicines as $key => $med):
+            $data [] = [
+                'patient_id' => $request->patient_id,
+                'file_id' => $request->patient_id,
+                'medicine_id' => $med,
+                'qty' => $request->qty[$key],
+                'batch_number' => $request->batch[$key],
+                'dosage' => $request->dosage[$key],
+                'notes' => $request->notes[$key],
+                'created_by' => $request->user()->id,
+                'updated_by' => $request->user()->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ];
+        endforeach;
+        PatientMedicine::insert($data);
+        return redirect()->route('patient.counselling', $request->file_id)->with('success', 'Medicine updated successfully');
+    }
     /**
      * Store a newly created resource in storage.
      */
