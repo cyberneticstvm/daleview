@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BillController;
 use App\Http\Controllers\HelperController;
 use App\Http\Controllers\LabController;
 use App\Http\Controllers\MedicineController;
@@ -33,6 +34,9 @@ Route::group(['middleware' => ['web', 'auth']], function(){
 });
 
 Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
+
+    Route::get('/helper/getservice', [HelperController::class, 'getservice'])->name('getservice');
+
     Route::get('/user', [UserController::class, 'index'])->name('user');
     Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
     Route::post('/user/create', [UserController::class, 'store'])->name('user.save');
@@ -60,6 +64,14 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::get('/service/edit/{id}', [ServiceController::class, 'edit'])->name('service.edit');
     Route::put('/service/edit/{id}', [ServiceController::class, 'update'])->name('service.update');
     Route::delete('/service/delete/{id}', [ServiceController::class, 'destroy'])->name('service.delete');
+
+    Route::get('/bill', [BillController::class, 'index'])->name('bill');
+    Route::post('/bill', [BillController::class, 'fetch'])->name('bill.fetch');
+    Route::get('/bill/create', [BillController::class, 'create'])->name('bill.create');
+    Route::post('/bill/create', [BillController::class, 'store'])->name('bill.save');
+    Route::get('/bill/edit/{id}', [BillController::class, 'edit'])->name('bill.edit');
+    Route::put('/bill/edit/{id}', [BillController::class, 'update'])->name('bill.update');
+    Route::delete('/bill/delete/{id}', [BillController::class, 'destroy'])->name('bill.delete');
 });
 
 Route::group(['middleware' => ['web', 'auth']], function(){

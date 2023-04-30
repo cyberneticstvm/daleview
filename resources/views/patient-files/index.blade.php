@@ -15,7 +15,7 @@
             </div>
             <div class="card-body table-responsive">
                 <table class="datatables-basic table table-sm table-bordered">
-                    <thead><tr><th>SL No</th><th>File Number</th><th>Patient ID</th><th>Patient Name</th><th>Counsellor</th><th>Notes</th><th>Edit</th><th>Delete</th></tr></thead>
+                    <thead><tr><th>SL No</th><th>File Number</th><th>Patient ID</th><th>Patient Name</th><th>Counsellor</th><th>Notes</th><th>Bill</th><th>Date</th><th>Edit</th><th>Delete</th></tr></thead>
                     <tbody>
                         @php $c = 1; @endphp
                         @forelse($records as $key => $file)
@@ -26,6 +26,8 @@
                             <td>{{ $file->patient->first_name.' '.$file->patient->last_name }}</td>
                             <td>{{ $file->counsellor->name }}</td>
                             <td>{{ $file->notes }}</td>                          
+                            <td class="text-center"><a href="/patient/file/bill/{{$file->id}}"><i class="fa fa-file text-primary"></i></a></td>
+                            <td>{{ $file->created_at->format('d/M/Y') }}</td>                          
                             <td class="text-center"><a href="/patient/file/edit/{{$file->id}}"><i class="fa fa-pencil text-warning"></i></a></td>
                             <td class="text-center">
                                 <form method="post" action="{{ route('patient.file.delete', $file->id) }}">

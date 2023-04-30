@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Lab;
 use App\Models\PatientLab;
 use App\Models\PatientMedicine;
+use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DB;
@@ -19,6 +20,9 @@ class HelperController extends Controller
         if($type == 'medicine'){
             $data = DB::table('medicines')->select('id', 'name')->get();
         }
+        if($type == 'service'){
+            $data = DB::table('services')->select('id', 'name')->get();
+        }
         return response()->json($data);
     }
 
@@ -30,5 +34,11 @@ class HelperController extends Controller
     public function getlabs(){
         $labs = PatientLab::whereDate('created_at', Carbon::today())->get();
         return view('patient-counselling.lab', compact('labs'));
+    }
+
+    public function getservice(Request $request){
+        $sid = $request->service;
+        $service = Service::find($sid);
+        return response()->json($service);
     }
 }

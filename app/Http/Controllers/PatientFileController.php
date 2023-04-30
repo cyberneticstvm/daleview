@@ -25,7 +25,7 @@ class PatientFileController extends Controller
 
     public function index()
     {
-        $records = PatientFile::whereDate('created_at', Carbon::today())->orderByDesc('id')->get();
+        $records = PatientFile::orderByDesc('id')->get();
         return view('patient-files.index', compact('records'));
     }
 

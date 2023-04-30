@@ -26,6 +26,22 @@ $(function(){
         };
         $('.'+cls).val(val);
     });
+    $(document).on("change", ".selService", function(){
+        var dis = $(this);
+        var service = dis.val();
+        $.ajax({
+            type: 'GET',
+            url: '/helper/getservice',
+            data: {'service': service},
+            success: function(response){
+                dis.closest('tr').find('.qty').val(1);
+                dis.closest('tr').find('.fee').val(response.fee);
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+                console.log(XMLHttpRequest);
+            }
+        });
+    })
 });
 
 function addRow(type){
@@ -41,6 +57,11 @@ function addRow(type){
         $(".tblMedicine").append("<tr><td><select class='form-control form-control-md select2 selMedicine' data-placeholder='Select' name='medicines[]' required='required'><option value=''>Select</option></select></td><td><input type='number' class='form-control' name='qty[]' placeholder='0' required /></td><td><input type='text' name='batch[]' class='form-control' placeholder='Batch Number' /></td><td><input type='text' class='form-control' name='dosage[]' placeholder='Dosage' required /></td><td><input type='text' class='form-control' name='notes[]' placeholder='Notes / Remarks' /></td><td class='text-center'><a href='javascript:void(0)' onclick='$(this).parent().parent().remove();'><i class='fa fa-times text-danger'></i></a></td></tr>");
         $('.selMedicine').select2();
         bindDDL('medicine', 'selMedicine');
+    }
+    if(type == 'service'){
+        $(".tblService").append("<tr><td><select class='form-control form-control-md select2 selService' data-placeholder='Select' name='services[]' required='required'><option value=''>Select</option></select></td><td><input type='number' class='form-control fee' name='fee[]' placeholder='0.00' required /></td><td><input type='number' class='form-control qty' name='qty[]' placeholder='0' required /></td><td><input type='text' class='form-control' name='notes[]' placeholder='Notes / Remarks' /></td><td class='text-center'><a href='javascript:void(0)' onclick='$(this).parent().parent().remove();'><i class='fa fa-times text-danger'></i></a></td></tr>");
+        $('.selService').select2();
+        bindDDL('service', 'selService');
     }
 }
 
