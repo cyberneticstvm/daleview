@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PatientFileController;
 use App\Http\Controllers\PatientCounsellingController;
+use App\Http\Controllers\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,13 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::get('/medicine/edit/{id}', [MedicineController::class, 'edit'])->name('medicine.edit');
     Route::put('/medicine/edit/{id}', [MedicineController::class, 'update'])->name('medicine.update');
     Route::delete('/medicine/delete/{id}', [MedicineController::class, 'destroy'])->name('medicine.delete');
+
+    Route::get('/service', [ServiceController::class, 'index'])->name('service');
+    Route::get('/service/create', [ServiceController::class, 'create'])->name('service.create');
+    Route::post('/service/create', [ServiceController::class, 'store'])->name('service.save');
+    Route::get('/service/edit/{id}', [ServiceController::class, 'edit'])->name('service.edit');
+    Route::put('/service/edit/{id}', [ServiceController::class, 'update'])->name('service.update');
+    Route::delete('/service/delete/{id}', [ServiceController::class, 'destroy'])->name('service.delete');
 });
 
 Route::group(['middleware' => ['web', 'auth']], function(){

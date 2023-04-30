@@ -724,6 +724,12 @@
                           <div data-i18n="Manage Medicine">Manage Medicine</div>
                         </a>
                       </li>
+                      <li class="menu-item">
+                        <a href="/service" class="menu-link">
+                          <i class="menu-icon tf-icons bx bx-cog"></i>
+                          <div data-i18n="Manage Services">Manage Services</div>
+                        </a>
+                      </li>
                       <!--<li class="menu-item">
                         <a
                           href="/dash"
