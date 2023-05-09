@@ -26,7 +26,7 @@
                             <td>{{ $file->patient->first_name.' '.$file->patient->last_name }}</td>
                             <td>{{ $file->counsellor->name }}</td>
                             <td>{{ $file->notes }}</td>                          
-                            <td class="text-center"><a href="/patient/file/bill/{{$file->id}}"><i class="fa fa-file text-primary"></i></a></td>
+                            <td class="text-center"><a target="_blank" href="/patient/file/bill/{{$file->id}}"><i class="fa fa-file text-primary"></i></a></td>
                             <td>{{ $file->created_at->format('d/M/Y') }}</td>                          
                             <td class="text-center"><a href="/patient/file/edit/{{$file->id}}"><i class="fa fa-pencil text-warning"></i></a></td>
                             <td class="text-center">

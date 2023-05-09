@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PatientFileController;
 use App\Http\Controllers\PatientCounsellingController;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\ServiceController;
 
 /*
@@ -28,10 +29,6 @@ Route::get('/', function () {
 
 Route::post('/', [UserController::class, 'login'])->name('login');
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
-
-Route::group(['middleware' => ['web', 'auth']], function(){
-    Route::get('/dash', [UserController::class, 'dash'])->name('dash');
-});
 
 Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
 
@@ -75,6 +72,8 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
 });
 
 Route::group(['middleware' => ['web', 'auth']], function(){
+    Route::get('/dash', [UserController::class, 'dash'])->name('dash');
+
     Route::get('/patient', [PatientController::class, 'index'])->name('patient');
     Route::get('/patient/create', [PatientController::class, 'create'])->name('patient.create');
     Route::post('/patient/create', [PatientController::class, 'store'])->name('patient.save');
@@ -102,4 +101,6 @@ Route::group(['middleware' => ['web', 'auth']], function(){
     Route::get('/lab/register', [HelperController::class, 'getlabs'])->name('getlabs');
 
     Route::get('/helper/createddl/{type}', [HelperController::class, 'createddl'])->name('createddl');
+
+    Route::get('/patient/file/bill/{id}', [PdfController::class, 'patientbill'])->name('pdf.patientbill');
 });

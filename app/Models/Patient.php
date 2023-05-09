@@ -33,6 +33,8 @@ class Patient extends Model
         'updated_by',
     ];
 
+    protected $casts = ['registration_date' => 'date'];
+
     public function gendername(){
         return $this->hasOne(Extra::class, 'id', 'gender');
     }
