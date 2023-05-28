@@ -15,7 +15,7 @@
             </div>
             <div class="card-body table-responsive">
                 <table class="datatables-basic table table-sm table-bordered">
-                    <thead><tr><th>SL No</th><th>Patient Name</th><th>File Number</th><th>Medicine</th><th>Batch Number</th><th>Qty</th><th>Dosage</th><th>Notes</th></tr></thead>
+                    <thead><tr><th>SL No</th><th>Patient Name</th><th>File Number</th><th>Prescription</th></tr></thead>
                     <tbody>
                         @php $c = 1; @endphp
                         @forelse($medicines as $key => $med)
@@ -23,11 +23,7 @@
                             <td>{{ $c++ }}</td>
                             <td>{{ $med->patient->first_name }}</td>
                             <td>{{ $med->file_id }}</td>
-                            <td>{{ $med->medicine->name }}</td>
-                            <td>{{ $med->batch_number }}</td>
-                            <td>{{ $med->qty }}</td>
-                            <td>{{ $med->dosage }}</td>
-                            <td>{{ $med->notes }}</td>
+                            <td class="text-center"><a target="_blank" href="/patient/medicine/prescription/{{encrypt($med->file_id)}}"><i class="fa fa-file text-primary"></i></a></td>
                         </tr>
                         @empty
                         @endforelse

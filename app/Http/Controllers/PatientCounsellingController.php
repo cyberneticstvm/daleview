@@ -30,7 +30,9 @@ class PatientCounsellingController extends Controller
         $sc = SmokingCessation::where('patient_id', $file->patient_id)->first();
         $counselling = Counselling::where('patient_id', $file->patient_id)->first();
         $doc_comments = DoctorComment::where('patient_id', $file->patient_id)->get();
-        return view('patient-counselling.create', compact('file', 'extras', 'sud', 'mhp', 'counselling', 'sc', 'doc_comments'));
+        $labs = PatientLab::where('patient_id', $file->patient_id)->orderByDesc('created_at')->get();
+        $medicines = PatientMedicine::where('patient_id', $file->patient_id)->orderByDesc('created_at')->get();
+        return view('patient-counselling.create', compact('file', 'extras', 'sud', 'mhp', 'counselling', 'sc', 'doc_comments', 'labs', 'medicines'));
     }
 
     /**
@@ -152,8 +154,8 @@ class PatientCounsellingController extends Controller
                 'patient_id' => $request->patient_id,
                 'file_id' => $request->patient_id,
                 'medicine_id' => $med,
-                'qty' => $request->qty[$key],
-                'batch_number' => $request->batch[$key],
+                'qty' => 0,
+                'batch_number' => NULL,
                 'dosage' => $request->dosage[$key],
                 'notes' => $request->notes[$key],
                 'created_by' => $request->user()->id,

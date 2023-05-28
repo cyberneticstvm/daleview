@@ -54,7 +54,7 @@ function addRow(type){
         bindDDL('lab', 'selLab');
     }
     if(type == 'medicine'){
-        $(".tblMedicine").append("<tr><td><select class='form-control form-control-md select2 selMedicine' data-placeholder='Select' name='medicines[]' required='required'><option value=''>Select</option></select></td><td><input type='number' class='form-control' name='qty[]' placeholder='0' required /></td><td><input type='text' name='batch[]' class='form-control' placeholder='Batch Number' /></td><td><input type='text' class='form-control' name='dosage[]' placeholder='Dosage' required /></td><td><input type='text' class='form-control' name='notes[]' placeholder='Notes / Remarks' /></td><td class='text-center'><a href='javascript:void(0)' onclick='$(this).parent().parent().remove();'><i class='fa fa-times text-danger'></i></a></td></tr>");
+        $(".tblMedicine").append("<tr><td><select class='form-control form-control-md select2 selMedicine' data-placeholder='Select' name='medicines[]' required='required'><option value=''>Select</option></select></td><td><input type='text' class='form-control' name='dosage[]' placeholder='Dosage' required /></td><td><input type='text' class='form-control' name='notes[]' placeholder='Notes / Remarks' /></td><td class='text-center'><a href='javascript:void(0)' onclick='$(this).parent().parent().remove();'><i class='fa fa-times text-danger'></i></a></td></tr>");
         $('.selMedicine').select2();
         bindDDL('medicine', 'selMedicine');
     }

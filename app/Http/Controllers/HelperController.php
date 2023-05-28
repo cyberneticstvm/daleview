@@ -27,7 +27,7 @@ class HelperController extends Controller
     }
 
     public function getmedicines(){
-        $medicines = PatientMedicine::whereDate('created_at', Carbon::today())->get();
+        $medicines = PatientMedicine::whereDate('created_at', Carbon::today())->groupBy('file_id')->get();
         return view('patient-counselling.medicine', compact('medicines'));
     }
 

@@ -103,4 +103,6 @@ Route::group(['middleware' => ['web', 'auth']], function(){
     Route::get('/helper/createddl/{type}', [HelperController::class, 'createddl'])->name('createddl');
 
     Route::get('/patient/file/bill/{id}', [PdfController::class, 'patientbill'])->name('pdf.patientbill');
+    Route::get('/patient/medicine/prescription/{id}', [PdfController::class, 'medprescription'])->name('pdf.medprescription');
+    
 });

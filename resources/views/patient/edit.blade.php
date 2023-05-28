@@ -47,7 +47,7 @@
                             @enderror
                         </div>
                         <div class="col-md-2">
-                            <label class="form-label req">Date of Birth</label>
+                            <label class="form-label">Date of Birth</label>
                             <input type="date" class="form-control" name="dob" value="{{ $patient->dob }}">
                             @error('dob')
                                 <small class="text-danger">{{ $errors->first('dob') }}</small>

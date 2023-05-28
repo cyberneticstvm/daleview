@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PatientFile;
+use App\Models\PatientMedicine;
 use Illuminate\Http\Request;
 use PDF;
 
@@ -13,4 +14,11 @@ class PdfController extends Controller
         $pdf = PDF::loadView('/pdfs/patient-bill', compact('file'));
         return $pdf->stream($file->id.'.pdf');
     }
+
+    public function medprescription($id){
+        $file = PatientFile::find(decrypt($id)); $medicines = PatientMedicine::where('file_id', decrypt($id))->get();
+        $pdf = PDF::loadView('/pdfs/medprescription', compact('file', 'medicines'));
+        return $pdf->stream($file->id.'.pdf');
+    }
+
 }
