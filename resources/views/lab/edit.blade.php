@@ -25,7 +25,20 @@
                                 <small class="text-danger">{{ $errors->first('name') }}</small>
                             @enderror
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
+                            <label class="form-label req">Category</label>
+                            <select name="category_id" class="form-control">
+                                <option value="">Select</option>
+                                @forelse($cats as $key => $cat)
+                                    <option value="{{ $cat->id }}" {{ ($lab->category_id == $cat->id) ? 'selected' : '' }}>{{ $cat->name }}</option>
+                                @empty
+                                @endforelse
+                            </select>
+                            @error('category_id')
+                                <small class="text-danger">{{ $errors->first('category_id') }}</small>
+                            @enderror
+                        </div>
+                        <div class="col-md-5">
                             <label class="form-label">Description</label>
                             <input type="text" class="form-control" name="description" placeholder="Description" value="{{ $lab->description }}">
                         </div>

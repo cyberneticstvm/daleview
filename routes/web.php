@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BillController;
 use App\Http\Controllers\HelperController;
+use App\Http\Controllers\LabCategoryController;
 use App\Http\Controllers\LabController;
 use App\Http\Controllers\MedicineController;
 use Illuminate\Support\Facades\Route;
@@ -47,6 +48,13 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::get('/lab/edit/{id}', [LabController::class, 'edit'])->name('lab.edit');
     Route::put('/lab/edit/{id}', [LabController::class, 'update'])->name('lab.update');
     Route::delete('/lab/delete/{id}', [LabController::class, 'destroy'])->name('lab.delete');
+
+    Route::get('/labcategory', [LabCategoryController::class, 'index'])->name('labcategory');
+    Route::get('/labcategory/create', [LabCategoryController::class, 'create'])->name('labcategory.create');
+    Route::post('/labcategory/create', [LabCategoryController::class, 'store'])->name('labcategory.save');
+    Route::get('/labcategory/edit/{id}', [LabCategoryController::class, 'edit'])->name('labcategory.edit');
+    Route::put('/labcategory/edit/{id}', [LabCategoryController::class, 'update'])->name('labcategory.update');
+    Route::delete('/labcategory/delete/{id}', [LabCategoryController::class, 'destroy'])->name('labcategory.delete');
 
     Route::get('/medicine', [MedicineController::class, 'index'])->name('medicine');
     Route::get('/medicine/create', [MedicineController::class, 'create'])->name('medicine.create');
@@ -99,10 +107,13 @@ Route::group(['middleware' => ['web', 'auth']], function(){
 
     Route::get('/pharmacy/register', [HelperController::class, 'getmedicines'])->name('getmedicines');
     Route::get('/lab/register', [HelperController::class, 'getlabs'])->name('getlabs');
+    Route::get('/lab/register/edit/{id}', [HelperController::class, 'getlabsforedit'])->name('getlabs.edit');
+    Route::put('/lab/register/edit/{id}', [HelperController::class, 'getlabsupdate'])->name('getlabs.update');
 
     Route::get('/helper/createddl/{type}', [HelperController::class, 'createddl'])->name('createddl');
 
     Route::get('/patient/file/bill/{id}', [PdfController::class, 'patientbill'])->name('pdf.patientbill');
     Route::get('/patient/medicine/prescription/{id}', [PdfController::class, 'medprescription'])->name('pdf.medprescription');
+    Route::get('/patient/lab/bill/{id}', [PdfController::class, 'patientlabbill'])->name('pdf.patientlabbill');
     
 });

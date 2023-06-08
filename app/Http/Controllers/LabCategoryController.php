@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Lab;
 use App\Models\LabCategory;
 use Illuminate\Http\Request;
 
-class LabController extends Controller
+class LabCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $labs = Lab::all();
-        return view('lab.index', compact('labs'));
+        $labs = LabCategory::all();
+        return view('lab.category.index', compact('labs'));
     }
 
     /**
@@ -22,8 +21,7 @@ class LabController extends Controller
      */
     public function create()
     {
-        $cats = LabCategory::all();
-        return view('lab.create', compact('cats'));
+        return view('lab.category.create');
     }
 
     /**
@@ -32,12 +30,11 @@ class LabController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|unique:labs,name',
-            'category_id' => 'required',
+            'name' => 'required',
         ]);
         $input = $request->all();
-        Lab::create($input);
-        return redirect()->route('lab')->with('success', 'Lab created successfully');
+        LabCategory::create($input);
+        return redirect()->route('labcategory')->with('success', 'Lab category created successfully');
     }
 
     /**
@@ -53,8 +50,8 @@ class LabController extends Controller
      */
     public function edit(string $id)
     {
-        $lab = Lab::find($id); $cats = LabCategory::all();
-        return view('lab.edit', compact('lab', 'cats'));
+        $lab = LabCategory::find($id);
+        return view('lab.category.edit', compact('lab'));
     }
 
     /**
@@ -63,13 +60,12 @@ class LabController extends Controller
     public function update(Request $request, string $id)
     {
         $this->validate($request, [
-            'name' => 'required|unique:labs,name,'.$id,
-            'category_id' => 'required',
+            'name' => 'required',
         ]);
         $input = $request->all();
-        $lab = Lab::find($id);
+        $lab = LabCategory::find($id);
         $lab->update($input);
-        return redirect()->route('lab')->with('success', 'Lab updated successfully');
+        return redirect()->route('labcategory')->with('success', 'Lab category updated successfully');
     }
 
     /**
@@ -77,7 +73,7 @@ class LabController extends Controller
      */
     public function destroy(string $id)
     {
-        Lab::find($id)->delete();
-        return redirect()->route('lab')->with('success', 'Lab deleted successfully');
+        LabCategory::find($id)->delete();
+        return redirect()->route('labcategory')->with('success', 'Lab category deleted successfully');
     }
 }

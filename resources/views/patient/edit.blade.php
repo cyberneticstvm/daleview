@@ -142,8 +142,8 @@
                                 @empty
                                 @endforelse
                             </select>
-                            @error('language')
-                                <small class="text-danger">{{ $errors->first('language') }}</small>
+                            @error('id_proof')
+                                <small class="text-danger">{{ $errors->first('id_proof') }}</small>
                             @enderror
                         </div>
                         <div class="col-md-2">

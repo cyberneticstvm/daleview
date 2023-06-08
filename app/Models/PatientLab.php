@@ -14,6 +14,8 @@ class PatientLab extends Model
         'file_id',
         'lab_id',
         'notes',
+        'result',
+        'normal_range',
         'created_by',
         'updated_by',
     ];
