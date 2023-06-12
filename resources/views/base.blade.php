@@ -719,6 +719,12 @@
                         </a>
                       </li>
                       <li class="menu-item">
+                        <a href="/labsubcategory" class="menu-link">
+                          <i class="menu-icon tf-icons bx bx-cylinder"></i>
+                          <div data-i18n="Manage Lab Subcategory">Manage Lab Subcategory</div>
+                        </a>
+                      </li>
+                      <li class="menu-item">
                         <a href="/lab" class="menu-link">
                           <i class="menu-icon tf-icons bx bx-cylinder"></i>
                           <div data-i18n="Manage Lab">Manage Lab</div>

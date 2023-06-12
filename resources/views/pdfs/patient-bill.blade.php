@@ -3,59 +3,50 @@
 <head>
     <title>Daleview</title>
     <style>
-        table{
-            border: 1px solid #e6e6e6;
-            font-size: 12px;
-        }
-        thead{
-            border-bottom: 1px solid #e6e6e6;
-        }
-        table thead th, table tbody td{
-            padding: 5px;
-        }
-        .bordered td, .bordered th{
-            border: 1px solid #e6e6e6;
-        }
-        .text-end{
-            text-align: right;
+        p{
+            line-height: 3px;
         }
         .bg{
-            background-color: lightblue;
+            background-color: #d3d3d3;
+        }
+        .head tr td{
+            padding: 5px;
         }
     </style>
 </head>
 <body>
     <center>
         <img src="./assets/img/daleview-logo.png" /><br/>
-        <p>THE DALE VIEW, PUNALAL.P.O, POOVACHAL (VIA), TRIVANDRUM - 695575, KERALA, INDIA. PH: 0472-2882063, 2882163</p>
-        <h2>Medical Invoice</h2>
+        <p>THE DALE VIEW CARE POINT</p>
+        <p>JOINING HANDS TO MAKE LIVES BETTER</p>
+        <p>Punalal Post, Poovachal (via), Thiruvananthapuram, Kerala</p>
+        <p>Ph: 0472-2882063, 2884939, 7907419020, 9809907030</p>
+        <h3><u>INVOICE</u></h3>
     </center>
     <br/>
     <table class="bordered" width="100%" cellspacing="0" cellpadding="0">
-        <tbody>
-            <tr>
-                <td>Bill To</td>
+        <tbody class="head">
+            <tr class="bg">
+                <td>Name</td>
                 <td>{{ $file->patient->first_name }}</td>
-                <td>Patient Contact</td>
-                <td>{{ $file->patient->mobile }}</td>
+                <td>Date</td>
+                <td>{{ $file->created_at->format('d/m/Y') }}</td>
             </tr>
             <tr>
-                <td>Reg. Date</td>
-                <td>{{ $file->patient->registration_date->format('d-m-Y') }}</td>
-                <td>Counsellor</td>
-                <td>{{ $file->counsellor->name }}</td>
-            </tr>
-            <tr>
-                <td>File number</td>
-                <td>{{ $file->id }}</td>
-                <td>Invoice Number</td>
+                <td>Patient ID</td>
+                <td>{{ $file->patient->id }}</td>
+                <td>Invoice No</td>
                 <td></td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td colspan="3"></td>
             </tr>
         </tbody>
     </table>
     <br><br>
     <table class="bordered" width="100%" cellspacing="0" cellpadding="0">
-        <thead class="bg"><tr><th>SL No</th><th>Services Performed</th><th>Price</th><th>Qty</th><th>Total</th></tr></thead>
+        <thead class="bg"><tr><th>SL No</th><th>Particulars</th><th>Price</th><th>Item Qty</th><th>Item Total</th></tr></thead>
         <tbody>
             @php $c = 1; @endphp
             @forelse($file->bills as $key => $value)

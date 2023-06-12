@@ -1,72 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Daleview</title>
+    <title>Daleview Lab Prescription</title>
     <style>
-        table{
-            border: 1px solid #e6e6e6;
-            font-size: 12px;
+        th{
+            text-align: left;
         }
         thead{
-            border-bottom: 1px solid #e6e6e6;
-        }
-        table thead th, table tbody td{
-            padding: 5px;
-        }
-        .bordered td, .bordered th{
-            border: 1px solid #e6e6e6;
-        }
-        .text-end{
-            text-align: right;
-        }
-        .bg{
-            background-color: lightblue;
+            background-color: #d3d3d3;
         }
     </style>
 </head>
 <body>
-    <center>
-        <img src="./assets/img/daleview-logo.png" /><br/>
-        <p>THE DALE VIEW, PUNALAL.P.O, POOVACHAL (VIA), TRIVANDRUM - 695575, KERALA, INDIA. PH: 0472-2882063, 2882163</p>
-        <h2>Investigations</h2>
-    </center>
-    <br/>
-    <table class="bordered" width="100%" cellspacing="0" cellpadding="0">
-        <tbody>
-            <tr>
-                <td>Patient Name</td>
-                <td>{{ $file->patient->first_name }}</td>
-                <td>Patient Contact</td>
-                <td>{{ $file->patient->mobile }}</td>
-            </tr>
-            <tr>
-                <td>Reg. Date</td>
-                <td>{{ $file->patient->registration_date->format('d-m-Y') }}</td>
-                <td>Counsellor</td>
-                <td>{{ $file->counsellor->name }}</td>
-            </tr>
-            <tr>
-                <td>File number</td>
-                <td>{{ $file->id }}</td>
-                <td>Presciption Number</td>
-                <td></td>
-            </tr>
-        </tbody>
+    <table width="100%">
+        <tr>
+            <td><strong>Patient Name</strong>: {{ $file->patient->first_name }}</td><td><strong>Age</strong>: {{ $file->patient->age }}</td><td><strong>Gender</strong>: {{ $file->patient->gendername->name }}</td>
+        </tr>
+        <tr><td><strong>Date</strong>: {{ $file->created_at->format('d/m/Y') }}</td></tr>
     </table>
-    <br><br>   
-    <table class="bordered" width="100%" cellspacing="0" cellpadding="0">
-        <thead>
-            <tr>
-                <th>Category</th>
-                <th>Test Name</th>
-                <th>Result</th>
-                <th>Normal Range</th>
-            </tr>
-        </thead>
+    <hr><br>
+    <strong>Investigations</strong><br><br>
+    @foreach($cats as $key1 => $cat)
+    <p>{{ $cat->name }}</p>
+    <table width="100%">
+        <thead><tr><th>Test Name</th><th>Result</th><th>Normal Range</th></tr></thead>
         <tbody>
-            @foreach($labs as $key => $la)
+            @foreach($labs->where('category_id', $cat->id) as $key => $la)
             <tr>
-                <td>{{ $la->lab->category->name }}</td>
                 <td>{{ $la->lab->name }}</td>
                 <td>{{ $la->result }}</td>
                 <td>{{ $la->normal_range }}</td>
@@ -74,7 +34,8 @@
             @endforeach
         </tbody>
     </table>
-    <br>
+    @endforeach
     <p>Results relate only to the sample as received. Please Correlate Clinically with findings.</p>
+    <hr>
 </body>
 </html>

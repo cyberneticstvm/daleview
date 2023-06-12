@@ -17,7 +17,7 @@
                 <form method="post" action="{{ route('lab.save') }}">
                     @csrf
                     <div class="row g-3">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label class="form-label req">Test Name</label>
                             <input type="text" class="form-control" name="name" placeholder="Test Name" value="{{ old('name') }}">
                             @error('name')
@@ -37,9 +37,23 @@
                                 <small class="text-danger">{{ $errors->first('category_id') }}</small>
                             @enderror
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-3">
+                            <label class="form-label">Sub Category</label>
+                            <select name="subcategory_id" class="form-control">
+                                <option value="">Select</option>
+                                @forelse($subcats as $key => $cat)
+                                    <option value="{{ $cat->id }}" {{ (old('subcategory_id') == $cat->id) ? 'selected' : '' }}>{{ $cat->name }}</option>
+                                @empty
+                                @endforelse
+                            </select>
+                        </div>
+                        <div class="col-md-3">
                             <label class="form-label">Description</label>
                             <input type="text" class="form-control" name="description" placeholder="Description" value="{{ old('description') }}">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Normal Range</label>
+                            <input type="text" class="form-control" name="normal_range" placeholder="Normal Range" value="{{ old('normal_range') }}">
                         </div>
                     </div>
                     <div class="pt-4 float-end">

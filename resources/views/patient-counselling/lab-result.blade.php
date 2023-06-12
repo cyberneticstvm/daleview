@@ -30,7 +30,7 @@
                                 <td>{{ $c++ }}</td>
                                 <td>{{ $lab->lab->name }}</td>
                                 <td><input type="text" class="form-control" name="result[]" placeholder="Result" /></td>
-                                <td><input type="text" class="form-control" name="normal_range[]" placeholder="Normal Range" /></td>
+                                <td><input type="text" class="form-control" name="normal_range[]" placeholder="Normal Range" value="{{ $lab->lab->normal_range }}"/></td>
                                 <td><input type="text" class="form-control" name="notes[]" value="{{$lab->notes}}" placeholder="Notes" /></td>
                             </tr>
                             @empty

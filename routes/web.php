@@ -4,6 +4,7 @@ use App\Http\Controllers\BillController;
 use App\Http\Controllers\HelperController;
 use App\Http\Controllers\LabCategoryController;
 use App\Http\Controllers\LabController;
+use App\Http\Controllers\LabsubcategoryController;
 use App\Http\Controllers\MedicineController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -55,6 +56,13 @@ Route::group(['middleware' => ['web', 'auth', 'admin']], function(){
     Route::get('/labcategory/edit/{id}', [LabCategoryController::class, 'edit'])->name('labcategory.edit');
     Route::put('/labcategory/edit/{id}', [LabCategoryController::class, 'update'])->name('labcategory.update');
     Route::delete('/labcategory/delete/{id}', [LabCategoryController::class, 'destroy'])->name('labcategory.delete');
+
+    Route::get('/labsubcategory', [LabsubcategoryController::class, 'index'])->name('labsubcategory');
+    Route::get('/labsubcategory/create', [LabsubcategoryController::class, 'create'])->name('labsubcategory.create');
+    Route::post('/labsubcategory/create', [LabsubcategoryController::class, 'store'])->name('labsubcategory.save');
+    Route::get('/labsubcategory/edit/{id}', [LabsubcategoryController::class, 'edit'])->name('labsubcategory.edit');
+    Route::put('/labsubcategory/edit/{id}', [LabsubcategoryController::class, 'update'])->name('labsubcategory.update');
+    Route::delete('/labsubcategory/delete/{id}', [LabsubcategoryController::class, 'destroy'])->name('labsubcategory.delete');
 
     Route::get('/medicine', [MedicineController::class, 'index'])->name('medicine');
     Route::get('/medicine/create', [MedicineController::class, 'create'])->name('medicine.create');
