@@ -21,15 +21,25 @@
         .underline td{
             padding: 5px;
         }
+        .f-big{
+            font-size: 20px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
+    <table width="100%"><tr>
+        <td width="20%">
+            <img src="./assets/img/daleview-logo.png" />
+        </td>
+        <td>
+            <p class="f-big">THE DALE VIEW CARE POINT</p>
+            <i>JOINING HANDS TO MAKE LIVES BETTER</i>
+            <p>Punalal Post, Poovachal (via), Thiruvananthapuram, Kerala</p>
+            <p>Ph: 0472-2882063, 2884939, 7907419020, 9809907030</p>
+        </td>
+    </tr></table>
     <center>
-        <img src="./assets/img/daleview-logo.png" /><br/>
-        <p>THE DALE VIEW CARE POINT</p>
-        <p>JOINING HANDS TO MAKE LIVES BETTER</p>
-        <p>Punalal Post, Poovachal (via), Thiruvananthapuram, Kerala</p>
-        <p>Ph: 0472-2882063, 2884939, 7907419020, 9809907030</p>
         <h3><u>DOCTOR PRESCRIPTION</u></h3>
     </center>
     <br/>
@@ -56,14 +66,13 @@
     <h3>Diagnosis:</h3>
     <h3>Rx.</h3>
     <table class="bordered" width="100%" cellspacing="0" cellpadding="0">
-        <thead class="bg"><tr><th>SL No</th><th>Medicine</th><th>Molecule</th><th>Dosage</th><th>Frequency</th><th>Instructions</th></tr></thead>
+        <thead class="bg"><tr><th>SL No</th><th>Medicine</th><th>Dosage</th><th>Frequency</th><th>Instructions</th></tr></thead>
         <tbody class="body">
             @php $c = 1; @endphp
             @forelse($medicines as $key => $value)
             <tr class="underline">
                 <td>{{ $c++ }}</td>
-                <td>{{ $value->medicine->name }}</td>
-                <td class="text-end">{{ $value->medicine->molecule }}</td>
+                <td>{{ $value->medicine->name }} <br> ({{ $value->medicine->molecule }})</td>
                 <td class="text-end">{{ $value->dosage }}</td>
                 <td></td>
                 <td class="text-end">{{ $value->notes }}</td>

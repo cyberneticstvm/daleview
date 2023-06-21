@@ -12,15 +12,25 @@
         .head tr td{
             padding: 5px;
         }
+        .f-big{
+            font-size: 20px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
-    <center>
-        <img src="./assets/img/daleview-logo.png" /><br/>
-        <p>THE DALE VIEW CARE POINT</p>
-        <p>JOINING HANDS TO MAKE LIVES BETTER</p>
-        <p>Punalal Post, Poovachal (via), Thiruvananthapuram, Kerala</p>
-        <p>Ph: 0472-2882063, 2884939, 7907419020, 9809907030</p>
+    <table width="100%"><tr>
+        <td width="20%">
+            <img src="./assets/img/daleview-logo.png" />
+        </td>
+        <td>
+            <p class="f-big">THE DALE VIEW CARE POINT</p>
+            <i>JOINING HANDS TO MAKE LIVES BETTER</i>
+            <p>Punalal Post, Poovachal (via), Thiruvananthapuram, Kerala</p>
+            <p>Ph: 0472-2882063, 2884939, 7907419020, 9809907030</p>
+        </td>
+    </tr></table>
+    <center>        
         <h3><u>INVOICE</u></h3>
     </center>
     <br/>
